@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kumru Chat</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      height: 100vh;
+    }
+    #chat-box {
+      width: 90%;
+      max-width: 700px;
+      height: 70vh;
+      overflow-y: auto;
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 20px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .msg {
+      margin: 10px 0;
+      padding: 10px 15px;
+      border-radius: 10px;
+    }
+    .user {
+      background: #0078ff;
+      color: white;
+      align-self: flex-end;
+    }
+    .assistant {
+      background: #e0e0e0;
+      color: black;
+      align-self: flex-start;
+    }
+    form {
+      display: flex;
+      width: 90%;
+      max-width: 700px;
+      margin-top: 15px;
+    }
+    input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 15px;
+      background: #0078ff;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      margin-left: 5px;
+      cursor: pointer;
+    }
+    .assistant p {
+  margin: 5px 0;
+  white-space: pre-wrap;
+}
+  </style>
+</head>
+<body>
+  <h2>Kumru Chat</h2>
+  <div id="chat-box"></div>
+
+  <form id="chat-form">
+    <input id="user-input" type="text" placeholder="Mesajınızı yazın..." autocomplete="off" />
+    <button type="submit">Gönder</button>
+  </form>
+
+  <script type="module">
+  import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+
+  const form = document.getElementById("chat-form");
+  const input = document.getElementById("user-input");
+  const chatBox = document.getElementById("chat-box");
+
+  // Helper: render markdown safely
+  function renderMarkdown(markdownText) {
+    // Convert markdown to HTML
+    let html = marked.parse(markdownText);
+    // Replace line breaks if missing
+    html = html.replace(/\n/g, "<br>");
+    return html;
+  }
+
+  function appendMessage(role, content) {
+    const div = document.createElement("div");
+    div.classList.add("msg", role);
+    // If AI, render markdown (user text stays plain)
+    if (role === "assistant") {
+      div.innerHTML = renderMarkdown(content);
+    } else {
+      div.textContent = content;
+    }
+    chatBox.appendChild(div);
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const userMessage = input.value.trim();
+    if (!userMessage) return;
+
+    appendMessage("user", userMessage);
+    input.value = "";
+
+    appendMessage("assistant", "⏳ Yanıt bekleniyor...");
+
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: userMessage })
+    });
+
+    const data = await response.json();
+
+    // Clean up markdown (remove **)
+    const cleanText = data.reply.replace(/\*\*/g, "");
+
+    chatBox.lastChild.innerHTML = renderMarkdown(cleanText);
+  });
+</script>
+
+</body>
+</html>
