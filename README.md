@@ -2,6 +2,7 @@
 
 nasıl yapılacağını düzensiz biçimde yazıp yapay zekaya düzenlettirdim. ben yazdım aslında yani, takip edebilirsiniz çalışıyor
 
+aslında huggingface de GGUF modelleri var ollama ile çalışıyor ama model çıkışı düzgün değil nedense ? o daha kolay olurdu
 
 # KUMRU 2B Modelini vLLM ile Windows'ta Çalıştırma Rehberi
 
