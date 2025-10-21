@@ -12,7 +12,7 @@ Bu rehber, `vngrs-ai/Kumru-2B` yapay zeka modelini [vLLM (Windows Fork)](https:/
 
   * **Disk Alanı:** Model ve kütüphanelerle birlikte yaklaşık **10 GB** boş disk alanına ihtiyacınız olacaktır.
   * **VRAM (Ekran Kartı Belleği):** Bu modelin en büyük gereksinimidir.
-      * **6 GB VRAM (RTX 4050m):** Yapılan testlerde modelin 6 GB VRAM'e sığmadığı ve `ValueError: Free memory on device...` hatası verdiği görülmüştür.
+      * **6 GB VRAM (RTX 4050m):** ~~Yapılan testlerde modelin 6 GB VRAM'e sığmadığı ve `ValueError: Free memory on device...` hatası verdiği görülmüştür.~~ Çalışıyor, sayfanın en altında yer verdim.
       * **8 GB VRAM (RTX 4060 veya üstü):** Modelin çalışması için **minimum 8 GB VRAM**'e sahip bir NVIDIA ekran kartı önerilir. 8GB kartlarda bile, VRAM kullanımını optimize etmek için aşağıdaki ayar adımları gereklidir.
   * **Python:** Bu rehber spesifik olarak **Python 3.12** kullanılarak hazırlanmıştır.
 
@@ -105,5 +105,11 @@ Modelin bir sohbet botu gibi davranması için arayüzünüzde aşağıdaki sist
 ```
 Adın Kumru. VNGRS tarafından Türkçe için sıfırdan eğitilmiş bir dil modelisin.
 ```
+
+# Güncelleme:
+
+6gb vramde çalıştırmayı başardım `vllm serve "vngrs-ai/Kumru-2B" --gpu-memory-utilization 0.7 --cpu-offload-gb 3` deneyin. değerleri salladım tuttu 
+
+-----
 
 ben 7B modelin (şu anda kumru sitesinde olan) system propmtunun bir kısmını girmiştim öylesine. daha iyi olduğundan falan değil yani doğrusunu girin siz
