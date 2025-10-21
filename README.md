@@ -32,7 +32,7 @@ Bu rehber, `vngrs-ai/Kumru-2B` yapay zeka modelini [vLLM (Windows Fork)](https:/
 
 1.  Python 3.12'nin `Scripts` klasörüne gidin (yukarıdaki adres).
 
-2.  Bu klasörde bir Komut İstemi (CMD) penceresi açın. (Hızlı yol: Klasör içindeyken `Shift` tuşuna basılı tutup `Sağ Tık` yapın ve "Komut istemini burada aç (powershell kullanmayın)" seçeneğine tıklayın).
+2.  Bu klasörde bir Komut İstemi (CMD) penceresi açın. (Hızlı yol: Klasör içindeyken `Shift` tuşuna basılı tutup `Sağ Tık` yapın ve "Komut istemini burada aç" (powershell kullanmayın) seçeneğine tıklayın).
 
 3.  **vLLM (Windows) Kurulumu:**
 
