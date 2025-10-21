@@ -94,7 +94,7 @@ Sunucu başarıyla başladığında, API'nin çalıştığı adresleri (`http://
 vLLM sunucusu arka planda çalışırken, modele bağlanacak bir arayüz çalıştırabilirsiniz.
 
 1.  Bu GitHub reposunu klonlayın.
-2.  Arayüzün klasörüne gidin ve `node index.js` ile arayüz sunucusunu başlatın.
+2.  Arayüzün klasörüne gidin ve `npm intsall` ve `node index.js` ile arayüz sunucusunu başlatın.
 3.  Tarayıcınızdan `http://localhost:3000` adresine giderek modelle sohbet edebilirsiniz.
 
 ### Önerilen Sistem Talimatı (System Prompt)
