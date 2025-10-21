@@ -112,4 +112,7 @@ Adın Kumru. VNGRS tarafından Türkçe için sıfırdan eğitilmiş bir dil mod
 
 -----
 
+<img width="2067" height="1061" alt="preview" src="https://github.com/user-attachments/assets/8a4c842b-2021-4dfe-a71f-058b138bd27a" />
+
+
 ben 7B modelin (şu anda kumru sitesinde olan) system propmtunun bir kısmını girmiştim öylesine. daha iyi olduğundan falan değil yani doğrusunu girin siz
